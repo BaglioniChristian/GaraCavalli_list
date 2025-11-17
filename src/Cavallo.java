@@ -8,7 +8,6 @@ public class Cavallo extends Thread {
     private FileWriter file;
 
     public Cavallo(String name, int lentezza, FileWriter file) {
-        super();
         this.name = name;
         this.lentezza = lentezza;
         this.file = file;
@@ -27,12 +26,13 @@ public class Cavallo extends Thread {
                 sleep(lentezza);
             } catch (InterruptedException e) {
                 try {
-                    file.write(" Cavallo " + name + " è stato azzoppato e si ferma!\n");
+                    file.write("Cavallo " + name + " è stato azzoppato e si ferma!\n");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
                 return;
             }
+
             try {
                 file.write(name + " cavalca - passo: " + i + "\n");
             } catch (IOException e) {
@@ -45,15 +45,7 @@ public class Cavallo extends Thread {
         }
     }
 
-    protected int getLentezza() {
-        return lentezza;
-    }
-
-    protected void setLentezza(int lentezza) {
-        this.lentezza = lentezza;
-    }
-
-    protected String getNameCavallo() {
+    public String getNameCavallo() {
         return name;
     }
 }
